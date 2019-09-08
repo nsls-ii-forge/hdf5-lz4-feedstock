@@ -1,0 +1,26 @@
+{% set name = "hdf5-lz4" %}
+{% set version = "0.2" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_url: https://github.com/dectris/HDF5Plugin.git
+  git_tag: 8b3306f34fb9d1b248ac13bbc935180528270e65  # no tags in repo
+
+build:
+  number: 0
+  skip: True  # [win or osx]
+
+requirements:
+  build:
+    - hdf5 =1.10.4
+  run:
+    - hdf5 =1.10.4
+
+about:
+  home: https://github.com/dectris/HDF5Plugin
+  license: BSD-2
+  license_file: LICENSE
+  summary: HDF5 Plugin filters, using HDF5 > 1.8.11
