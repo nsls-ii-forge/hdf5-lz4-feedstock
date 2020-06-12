@@ -25,7 +25,7 @@ requirements:
 test:
   commands:
     - test ! -z $HDF5_PLUGIN_PATH  # [not win]
-    - if not exist %HDF5_PLUGIN_PATH% exit /b 1  # [win]
+    - if not exist %HDF5_PLUGIN_PATH% exit 1  # [win]
     - test $HDF5_PLUGIN_PATH == ${CONDA_PREFIX}/usr/local/hdf5/lib/plugin  # [not win]
 
 about:
