@@ -23,10 +23,12 @@ requirements:
     - hdf5 =1.10.4
 
 test:
+  requires:
+    - python
   commands:
-    - test ! -z $HDF5_PLUGIN_PATH  # [not win]
-    - if not exist %HDF5_PLUGIN_PATH% exit 1  # [win]
-    - test $HDF5_PLUGIN_PATH == ${CONDA_PREFIX}/usr/local/hdf5/lib/plugin  # [not win]
+    - python -c 'import os; assert "HDF5_PLUGIN_PATH" in os.environ'
+    - python -c 'import os; assert os.path.isdir(os.environ["HDF5_PLUGIN_PATH"])'
+    - python -c 'import os; assert os.environ["HDF5_PLUGIN_PATH"] == os.environ["CONDA_PREFIX"] + "/usr/local/hdf5/lib/plugin"'
 
 about:
   home: https://github.com/dectris/HDF5Plugin
