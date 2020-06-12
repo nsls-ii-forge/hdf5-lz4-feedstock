@@ -11,7 +11,7 @@ source:
 
 build:
   number: 1
-  # skip: True  # [win]
+  skip: True  # [win]
 
 requirements:
   build:
@@ -29,7 +29,7 @@ test:
   commands:
     - python -c "import os; assert 'HDF5_PLUGIN_PATH' in os.environ"
     - python -c "import os; assert os.path.isdir(os.environ['HDF5_PLUGIN_PATH'])"
-    - python -c "import os; print(os.environ['HDF5_PLUGIN_PATH']); print(os.environ['CONDA_PREFIX']); assert os.environ['HDF5_PLUGIN_PATH'] == os.environ['CONDA_PREFIX'] + '/usr/local/hdf5/lib/plugin'"
+    - python -c "import os; assert os.environ['HDF5_PLUGIN_PATH'] == os.environ['CONDA_PREFIX'] + '/usr/local/hdf5/lib/plugin'"
 
 about:
   home: https://github.com/dectris/HDF5Plugin
